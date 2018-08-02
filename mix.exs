@@ -8,9 +8,11 @@ defmodule Mupex.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
 
       # Docs
       name: "Mupex",
+      description: "A heavy WIP library for streaming multipart data.",
       source_url: "https://github.com/JohnnyCrazy/mupex",
       homepage_url: "https://hexdocs.pm/mupex",
       docs: [
@@ -25,6 +27,19 @@ defmodule Mupex.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT"],
+      maintainers: [
+        "Jonas Dellinger"
+      ],
+      files: ["lib", "mix.exs", "LICENSE", "README.md"],
+      links: %{
+        "GitHub" => "https://github.com/JohnnyCrazy/mupex"
+      }
     ]
   end
 

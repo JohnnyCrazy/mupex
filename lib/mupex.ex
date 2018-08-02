@@ -44,6 +44,8 @@ defmodule Mupex do
     {:done, conn}
   end
 
+  defp parse_headers(result), do: {:error, result}
+
   defp multipart_type(mp_headers) do
     with {_, disposition} <- List.keyfind(mp_headers, "content-disposition", 0),
          [_, params] <- :binary.split(disposition, ";"),
