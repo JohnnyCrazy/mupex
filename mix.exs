@@ -7,11 +7,17 @@ defmodule Mupex.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
 
-      #Docs
+      # Docs
       name: "Mupex",
-      source_url:
+      source_url: "https://github.com/JohnnyCrazy/mupex",
+      homepage_url: "https://hexdocs.pm/mupex",
+      docs: [
+        # The main page in the docs
+        main: "Mupex",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -26,7 +32,7 @@ defmodule Mupex.MixProject do
   defp deps do
     [
       {:plug, "~> 1.6.1"},
-      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19-rc", only: :dev, runtime: false}
     ]
   end
 end

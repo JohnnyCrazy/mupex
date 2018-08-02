@@ -1,9 +1,6 @@
 defmodule Mupex do
   import Plug.Conn
 
-  def config, do: Application.get_env(:mupex, Mupex)
-  def config(key), do: Application.get_env(:mupex, Mupex)[key]
-
   def next_headers(conn, opts \\ []) do
     opts = Keyword.merge(config(:headers), opts)
     parse_headers(read_part_headers(conn, opts))
@@ -20,6 +17,9 @@ defmodule Mupex do
 
     Stream.resource(start_fun, next_fun, after_fun)
   end
+
+  defp config, do: Application.get_env(:mupex, Mupex)
+  defp config(key), do: Application.get_env(:mupex, Mupex)[key]
 
   defp stream_body({{:more, tail, conn}, opts}) do
     {[{:data, tail, conn}], {read_part_body(conn, opts), opts}}
